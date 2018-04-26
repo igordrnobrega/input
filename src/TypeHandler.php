@@ -6,6 +6,7 @@ namespace Linio\Component\Input;
 
 use Linio\Component\Input\Instantiator\InstantiatorInterface;
 use Linio\Component\Input\Instantiator\SetInstantiator;
+use Linio\Component\Input\Node\ArrayNode;
 use Linio\Component\Input\Node\BaseNode;
 use Linio\Component\Input\Node\BoolNode;
 use Linio\Component\Input\Node\CollectionNode;
@@ -38,7 +39,7 @@ class TypeHandler
             'double' => FloatNode::class,
             'numeric' => NumericNode::class,
             'string' => StringNode::class,
-            'array' => BaseNode::class,
+            'array' => ArrayNode::class,
             'object' => ObjectNode::class,
             'datetime' => DateTimeNode::class,
         ];
