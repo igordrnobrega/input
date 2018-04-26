@@ -485,6 +485,17 @@ class InputHandlerTest extends TestCase
         $inputHandler->bind($input);
         $this->assertFalse($inputHandler->isValid());
     }
+
+    public function testValidatesArrayType()
+    {
+        $input = [
+            'metadata' => 'igor',
+        ];
+
+        $inputHandler = new TestArrayNotBeingValidated();
+        $inputHandler->bind($input);
+        $this->assertFalse($inputHandler->isValid());
+    }
 }
 
 class TestConstraintOverrideType extends InputHandler
@@ -503,6 +514,16 @@ class TestDatetimeNotValidatingDate extends InputHandler
     public function define()
     {
         $this->add('date', 'datetime', [
+            'required' => true,
+        ]);
+    }
+}
+
+class TestArrayNotBeingValidated extends InputHandler
+{
+    public function define()
+    {
+        $this->add('metadata', 'array', [
             'required' => true,
         ]);
     }
